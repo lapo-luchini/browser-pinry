@@ -1,0 +1,24 @@
+{
+  "name": "Pinry chrome",
+  "version": "0.0.1",
+  "description": "Pins images from current page to a Pinry installation.",
+  "manifest_version": 2,
+  "icons": {
+    "48": "ico-48.png",
+    "128": "ico-128.png"
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "browser_action": {
+    "default_icon": "ico-128.png",
+    "default_title": "Pinry chrome"
+  },
+  "background": {
+    "scripts": [ "background.js" ]
+  },
+  "options_page": "options.html"
+}
