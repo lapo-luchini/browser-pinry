@@ -1,6 +1,6 @@
 {
   "name": "Pinry chrome",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Pins images from current page to a Pinry installation.",
   "manifest_version": 2,
   "icons": {
@@ -8,6 +8,7 @@
     "128": "ico-128.png"
   },
   "permissions": [
+    "contextMenus",
     "tabs",
     "storage",
     "http://*/*",
