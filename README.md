@@ -1,7 +1,7 @@
-Pinry Chrome
+Browser Pinry
 ============
 
-This is a Chrome Extension to ease adding content to [Pinry](https://github.com/pinry/pinry/).
+This is a Chrome/Firefox Extension to ease adding content to [Pinry](https://github.com/pinry/pinry/).
 
 Forked by winkidney.
 
