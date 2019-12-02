@@ -5,9 +5,9 @@ var defaultURL = 'http://demo.getpinry.com/',
     re = /[/]+(static[/]js[/]bookmarklet[.]js)?$/;
 
 function load() {
-  chrome.storage.local.get('pinryUrl', function (obj) {
-    input.value = (obj.pinryUrl || defaultURL).replace(re, '');
-  });
+    chrome.storage.local.get('pinryUrl', function (obj) {
+        input.value = (obj.pinryUrl || defaultURL).replace(re, '');
+    });
 }
 
 function save() {
