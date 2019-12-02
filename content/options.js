@@ -28,7 +28,7 @@ function load() {
 }
 
 function save() {
-    url.value = url.value.trim().replace(re, '') + '/static/js/bookmarklet.js';
+    url.value = url.value.trim().replace(re, '');
     check();
     const cfg = {
         pinryUrl: url.value,
