@@ -1,4 +1,4 @@
-﻿// Show and save changes to browser extension settings.
+// Show and save changes to browser extension settings.
 
 const
     defaultURL = 'http://demo.getpinry.com/',
