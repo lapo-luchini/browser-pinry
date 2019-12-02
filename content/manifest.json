@@ -9,10 +9,8 @@
   },
   "permissions": [
     "contextMenus",
-    "tabs",
-    "storage",
-    "http://*/*",
-    "https://*/*"
+    "activeTab",
+    "storage"
   ],
   "browser_action": {
     "default_icon": "ico-128.png",

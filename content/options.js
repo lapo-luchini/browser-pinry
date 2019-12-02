@@ -7,16 +7,10 @@ const
     re = /[/]+(static[/]js[/]bookmarklet[.]js)?$/;
 
 function check() {
-    // urlState.innerText = '(checking)';
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', url.value, true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState < 4) return;
-        const valid = xhr.responseText.indexOf('* Bookmarklet for Pinry') > 0;
-        console.log(xhr.readyState, xhr.responseText.substring(0, 100));
-        url.style.backgroundColor = valid ? '#9F9' : '#F99';
-    };
-    xhr.send();
+    const img = new Image(); // we can avoid extra permissions and CORS this way
+    img.onload = function() { url.style.backgroundColor = '#9F9'; };
+    img.onerror = function() { url.style.backgroundColor = '#F99'; };
+    img.src = url.value + '/static/img/logo-dark.png';
 }
 
 function load() {
