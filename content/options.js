@@ -16,7 +16,7 @@ function check() {
 function load() {
     chrome.storage.local.get(null, function (obj) {
         url.value = obj.pinryUrl || defaultURL;
-        menu.checked = obj.contextMenu;
+        menu.checked = (obj.contextMenu === false) ? false : true; // default true
         check();
     });
 }
