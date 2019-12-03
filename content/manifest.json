@@ -14,7 +14,7 @@
   ],
   "browser_action": {
     "default_icon": "ico-128.png",
-    "default_title": "Pinry"
+    "default_title": "Add to Pinry"
   },
   "background": {
     "scripts": [ "background.js" ]
