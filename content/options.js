@@ -6,11 +6,22 @@ const
     menu = document.getElementById('contextMenu'),
     re = /[/]+(static[/]js[/]bookmarklet[.]js)?$/;
 
+function checkIMG(url) {
+    return new Promise((resolve, reject) => {
+        // we can avoid extra permissions and CORS this way
+        const img = new Image();
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = url;
+    });
+}
+
 function check() {
-    const img = new Image(); // we can avoid extra permissions and CORS this way
-    img.onload = function() { url.style.backgroundColor = '#9F9'; };
-    img.onerror = function() { url.style.backgroundColor = '#F99'; };
-    img.src = url.value + '/static/img/logo-dark.png';
+    const img1 = checkIMG(url.value + '/static/img/logo-dark.png'); // Pinry pre-SPA
+    const img2 = checkIMG(url.value + '/img/icons/android-chrome-192x192.png'); // Pinry SPA
+    img1.catch(() => img2 // waiting for Promise.any: https://github.com/tc39/proposal-promise-any
+    ).then(() => { url.style.backgroundColor = '#9F9' }
+    ).catch(() => { url.style.backgroundColor = '#F99' });
 }
 
 function load() {

@@ -1,6 +1,6 @@
 {
   "name": "Add to Pinry",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Pins images from current page to a Pinry installation.",
   "manifest_version": 2,
   "icons": {
