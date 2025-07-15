@@ -1,27 +1,29 @@
 {
   "name": "Add to Pinry",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Pins images from current page to a Pinry installation.",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "icons": {
     "48": "ico-48.png",
     "128": "ico-128.png"
   },
   "permissions": [
     "contextMenus",
-    "activeTab",
-    "storage"
+    "storage",
+    "scripting"
   ],
-  "browser_action": {
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
     "default_icon": "ico-128.png",
     "default_title": "Add to Pinry"
   },
   "background": {
-    "scripts": [ "background.js" ]
+    "service_worker": "background.js"
   },
   "options_ui": {
     "page": "options.html",
-    "browser_style": true,
-    "chrome_style": true
+    "browser_style": true
   }
 }
