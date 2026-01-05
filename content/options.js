@@ -22,8 +22,7 @@ function check() {
         .then(() => {
             url.style.backgroundColor = '#9F9'
         })
-        .catch((e) => {
-            console.log(e.errors)
+        .catch(() => {
             url.style.backgroundColor = '#F99'
         })
 }
