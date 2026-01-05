@@ -19,9 +19,12 @@ function checkIMG(url) {
 function check() {
     const img1 = checkIMG(url.value + '/static/img/logo-dark.png'); // Pinry pre-SPA
     const img2 = checkIMG(url.value + '/img/icons/android-chrome-192x192.png'); // Pinry SPA
-    img1.catch(() => img2 // waiting for Promise.any: https://github.com/tc39/proposal-promise-any
-    ).then(() => { url.style.backgroundColor = '#9F9' }
-    ).catch(() => { url.style.backgroundColor = '#F99' });
+    Promise.any([img1, img2]).then(() => {
+        url.style.backgroundColor = '#9F9'
+    }).catch(e => {
+        console.log(e.errors)
+        url.style.backgroundColor = '#F99'
+    });
 }
 
 function load() {
