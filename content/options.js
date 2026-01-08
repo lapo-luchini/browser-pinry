@@ -5,7 +5,7 @@ const defaultURL = 'http://demo.getpinry.com/',
     menu = document.getElementById('contextMenu'),
     re = /[/]+(static[/]js[/]bookmarklet[.]js)?$/
 
-function checkIMG(url) {
+async function checkIMG(url) {
     return new Promise((resolve, reject) => {
         // we can avoid extra permissions and CORS this way
         const img = new Image()
@@ -15,16 +15,16 @@ function checkIMG(url) {
     })
 }
 
-function check() {
-    const img1 = checkIMG(url.value + '/static/img/logo-dark.png') // Pinry pre-SPA
-    const img2 = checkIMG(url.value + '/img/icons/android-chrome-192x192.png') // Pinry SPA
-    Promise.any([img1, img2])
-        .then(() => {
-            url.style.backgroundColor = '#9F9'
-        })
-        .catch(() => {
-            url.style.backgroundColor = '#F99'
-        })
+async function check() {
+    try {
+        await Promise.any([
+            checkIMG(url.value + '/static/img/logo-dark.png'), // Pinry pre-SPA
+            checkIMG(url.value + '/img/icons/android-chrome-192x192.png') // Pinry SPA
+        ])
+        url.style.backgroundColor = '#9F9'
+    } catch {
+        url.style.backgroundColor = '#F99'
+    }
 }
 
 function load() {
