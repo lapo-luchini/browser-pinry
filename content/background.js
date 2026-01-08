@@ -1,21 +1,26 @@
-chrome.browserAction.onClicked.addListener(function (tab) {
-    chrome.tabs.executeScript(tab.id, { file: 'bookmarklet.js' })
-})
+function executeBookmarklet(tab) {
+    console.log('Execute bookmarklet on tab', tab.id)
+    chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ['bookmarklet.js'],
+    })
+}
+
+chrome.action.onClicked.addListener(executeBookmarklet)
 
 function updateContextMenu() {
-    chrome.storage.local.get('contextMenu', function (obj) {
+    chrome.storage.local.get('contextMenu', (obj) => {
         console.log('Context menu: ' + (obj.contextMenu ? 'enabled' : 'disabled'))
         chrome.contextMenus.removeAll()
-        if (obj.contextMenu)
+        if (obj.contextMenu) {
             chrome.contextMenus.create({
+                id: 'add_to',
                 title: 'Add to Pinry',
                 contexts: ['page', 'selection', 'link', 'editable', 'image', 'video', 'audio'],
-                onclick: function (info, tab) {
-                    chrome.tabs.executeScript(tab.id, { file: 'bookmarklet.js' })
-                },
             })
+            chrome.contextMenus.onClicked.addListener((info, tab) => executeBookmarklet(tab))
+        }
     })
 }
 
 updateContextMenu()
-chrome.runtime.onMessage.addListener(updateContextMenu)
