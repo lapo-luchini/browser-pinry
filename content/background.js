@@ -24,3 +24,6 @@ function updateContextMenu() {
 }
 
 updateContextMenu()
+
+// called on each change of options
+chrome.runtime.onMessage.addListener(updateContextMenu)
