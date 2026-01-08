@@ -21,7 +21,9 @@ function updateContextMenu() {
     })
 }
 
-chrome.contextMenus.onClicked.addListener((info, tab) => executeBookmarklet(tab))
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+    if (info.menuItemId == 'addToPinry') executeBookmarklet(tab)
+})
 
 updateContextMenu()
 
