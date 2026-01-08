@@ -9,8 +9,12 @@
     function closePinry() {
         let el = document.getElementById('pinry-images')
         el.parentNode.removeChild(el)
-        el = document.getElementById('pinry-bookmarklet')
-        el.parentNode.removeChild(el)
+    }
+
+    if (document.getElementById('pinry-images')) {
+        // Pinry is already open, close it instead
+        closePinry()
+        return
     }
 
     let pinryUrl

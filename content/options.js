@@ -19,7 +19,7 @@ async function check() {
     try {
         await Promise.any([
             checkIMG(url.value + '/static/img/logo-dark.png'), // Pinry pre-SPA
-            checkIMG(url.value + '/img/icons/android-chrome-192x192.png') // Pinry SPA
+            checkIMG(url.value + '/img/icons/android-chrome-192x192.png'), // Pinry SPA
         ])
         url.style.backgroundColor = '#9F9'
     } catch {
