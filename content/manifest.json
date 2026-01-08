@@ -3,6 +3,11 @@
   "version": "0.3.0",
   "description": "Pins images from current page to a Pinry installation.",
   "manifest_version": 3,
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{d9a16cee-f53a-40ba-9f25-f8a76a91b4fb}"
+    }
+  },
   "icons": {
     "48": "ico-48.png",
     "128": "ico-128.png"
